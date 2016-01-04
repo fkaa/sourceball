@@ -1,7 +1,7 @@
 Sourceball
 ==========
 
-Easily build [https://github.com/iamgreaser/iceball](iceball) dependencies on
+Easily build [iceball](https://github.com/iamgreaser/iceball) dependencies on
 windows (MSVC, MinGW). Inspired by Löve2D's "Megasource".
 
 #### Prerequisites
@@ -20,5 +20,5 @@ And you're set!
 
 The resulting files will be in `dist/` and can simply be copied over into the
 iceball directory. For further instructions on building, consult the
-[https://github.com/iamgreaser/iceball/wiki/Building](iceball wiki).
+[iceball wiki](https://github.com/iamgreaser/iceball/wiki/Building).
 
