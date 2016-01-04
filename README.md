@@ -5,8 +5,8 @@ Easily build [iceball](https://github.com/iamgreaser/iceball) dependencies on
 windows (MSVC, MinGW). Inspired by Löve2D's "Megasource".
 
 #### Prerequisites
-    * Windows
-    * Visual Studio 2015 (haven't tested others)
+* Windows
+* Visual Studio 2015 (haven't tested others)
 
 #### Building
 To build, simply do:
