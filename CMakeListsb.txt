@@ -1,0 +1,86 @@
+#/src/CMakeLists.txt
+
+file(GLOB LUA_FILES lua*)
+set(MAIN_FILES
+    dsp.c
+    img.c
+    json.c
+    logtxt.c
+    main.c
+    map.c
+    model.c
+    network.c
+    path.c
+    vecmath.c
+    wav.c
+    png.c
+)
+
+set(GL_FILES
+    ../vendor/gl/gl_core.c
+    gl/render.c
+    gl/render_img.c
+)
+source_group(gl FILES ${GL_FILES})
+
+set(SOFT_FILES
+    softgm/render.c
+    softgm/render_img.c
+)
+source_group(softgm FILES ${SOFT_FILES})
+source_group(lua FILES ${LUA_FILES})
+
+# iceball target
+add_executable(iceball ${MAIN_FILES} ${LUA_FILES} ${GL_FILES})
+
+set(MAIN_LIBRARIES
+    SDL2
+    enet
+    sackit
+    liblua
+    zlib
+)
+
+set(DEDI_LIBRARIES
+    enet
+    liblua
+    SDL2
+)
+
+if (MINGW)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mwindows -mconsole")
+    set(EXTRA_MAIN_LIBRARIES
+        mingw32
+	SDL2main
+        ws2_32
+     )
+
+    set(EXTRA_DEDI_LIBRARIES
+	SDL2main
+        mingw32
+     )
+endif ()
+
+target_link_libraries(iceball
+    ${EXTRA_MAIN_LIBRARIES}
+    ${MAIN_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+    ws2_32
+    winmm
+)
+
+set_target_properties(iceball PROPERTIES COMPILE_DEFINITIONS "USE_OPENGL")
+
+# iceball-dedi target
+add_executable(iceball-dedi EXCLUDE_FROM_ALL
+    ${MAIN_FILES}
+    ${LUA_FILES}
+)
+
+target_link_libraries(iceball-dedi
+    ${EXTRA_DEDI_LIBRARIES}
+    ${DEDI_LIBRARIES}
+)
+
+set_target_properties(iceball-dedi PROPERTIES COMPILE_DEFINITIONS "DEDI")
+
