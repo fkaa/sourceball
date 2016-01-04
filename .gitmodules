@@ -10,3 +10,6 @@
 [submodule "vendor/sackit"]
 	path = vendor/sackit
 	url = https://github.com/fkaa/sackit.git
+[submodule "vendor/lua51"]
+	path = vendor/lua51
+	url = https://github.com/LuaDist/lua.git
